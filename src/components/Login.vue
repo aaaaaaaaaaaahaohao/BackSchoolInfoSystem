@@ -43,9 +43,12 @@ export default{
           password:password
         } 
         const res = await login(data)
-        let token = res.data.token
+        let token = res.data.token || ''
         console.log(token)
+        // 本地保存token信息，并在请求头带上token
         localStorage.setItem('token', token)
+        // Vuex保存user信息
+        this.$store.dispatch('saveUser',res.data.userInfo)
         this.$router.push('/systemEntrance/BackSchoolInfo')
       },
       doRegister:function(){

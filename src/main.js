@@ -4,6 +4,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './vuex/store/index'
 import 'element-ui/lib/theme-chalk/index.css'
 import { Button, Select, Form, FormItem, Input, Image, Header, Container, Aside, Menu, Submenu, MenuItem, MenuItemGroup, Main, Breadcrumb, BreadcrumbItem, Row, Col, Dropdown, DropdownItem, DropdownMenu, Table, TableColumn, Pagination, Dialog, Radio, RadioGroup, RadioButton } from 'element-ui'
 Vue.component(Button.name, Button)
@@ -42,5 +43,6 @@ Vue.component(RadioButton.name, RadioButton)
 new Vue({
   el: '#app',
   router,
-  render: h => h(App)
+  render: h => h(App),
+  store
 })

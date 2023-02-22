@@ -6,7 +6,7 @@
     <el-container>
       <el-header style="text-align: right; font-size: 12px">
         <i class="el-icon-setting" style="margin-right: 15px"></i>
-        <span>王小虎</span>
+        <span>{{$store.getters.user.name || '未登录'}}</span>
       </el-header>
       <common-bread/>
       <el-main>
