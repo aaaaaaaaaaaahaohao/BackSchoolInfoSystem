@@ -42,10 +42,10 @@
       <el-table-column v-for="column in tableColumn" :key="column.id" :index="column.id" :prop="column.varName" :label="column.name" width="conlumn.width"> </el-table-column>
       <el-table-column fixed="right" label="操作" width="200">
         <template slot-scope="scope">
-          <el-button @click="handleClick(scope.row)" type="text" size="small"
-            >查看</el-button
+          <el-button @click="handleDelete(scope.row)" type="text" size="small"
+            >删除</el-button
           >
-          <el-button type="text" size="small">编辑</el-button>
+          <el-button @click="handleUpdate(scope.row)" type="text" size="small">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -64,11 +64,14 @@
 /* eslint-disable */
 export default {
   methods: {
-    handleClick(row) {
+    handleDelete(row) {
       console.log(row);
     },
+    handleUpdate(row){
+      this.showDialog()
+    }
   },
-  props: ["headerFunctionName", "tableData", "tableColumn"],
+  props: ["headerFunctionName", "tableData", "tableColumn", "showDialog"],
   data() {
     return {
     };

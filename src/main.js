@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
-import { Button, Select, Form, FormItem, Input, Image, Header, Container, Aside, Menu, Submenu, MenuItem, MenuItemGroup, Main, Breadcrumb, BreadcrumbItem, Row, Col, Dropdown, DropdownItem, DropdownMenu, Table, TableColumn, Pagination } from 'element-ui'
+import { Button, Select, Form, FormItem, Input, Image, Header, Container, Aside, Menu, Submenu, MenuItem, MenuItemGroup, Main, Breadcrumb, BreadcrumbItem, Row, Col, Dropdown, DropdownItem, DropdownMenu, Table, TableColumn, Pagination, Dialog } from 'element-ui'
 
 Vue.component(Button.name, Button)
 Vue.component(Select.name, Select)
@@ -31,6 +31,7 @@ Vue.component(DropdownMenu.name, DropdownMenu)
 Vue.component(Table.name, Table)
 Vue.component(TableColumn.name, TableColumn)
 Vue.component(Pagination.name, Pagination)
+Vue.component(Dialog.name, Dialog)
 
 /* eslint-disable no-new */
 new Vue({

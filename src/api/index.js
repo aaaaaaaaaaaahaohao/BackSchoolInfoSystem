@@ -4,9 +4,14 @@ export function login(data) {
 	return request({
 		url: '/api/login',
 		method: 'post',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
+		data
+	})
+}
+
+export function  updateTeaApproval(data){
+	return request({
+		url: '/api/user/update',
+		method: 'post',
 		data
 	})
 }

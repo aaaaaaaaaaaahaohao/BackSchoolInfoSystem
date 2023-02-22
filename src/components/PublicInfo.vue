@@ -58,7 +58,7 @@
       </el-table-column>
     </el-table>
     <el-row>
-        <el-col offset="9" style="margin-top: 20px;">
+        <el-col :offset=9 style="margin-top: 20px;">
             <el-pagination
                 background
                 layout="prev, pager, next"
