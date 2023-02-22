@@ -35,9 +35,9 @@
         </el-button>
     </el-row>
     <el-table :data="tableData" border>
-      <el-table-column prop="stuName" label="学生姓名" :width="200">
+      <el-table-column prop="name" label="学生姓名" :width="200">
       </el-table-column>
-      <el-table-column prop="stuId" label="学生Id" :width="200">
+      <el-table-column prop="id" label="学生Id" :width="200">
       </el-table-column>
       <el-table-column prop="departPlace" label="出发地" :width="200">
       </el-table-column>
@@ -63,7 +63,8 @@
             <el-pagination
                 background
                 layout="prev, pager, next"
-                :total="50">
+                @current-change="handleCurrentChange"
+                :total="total">
             </el-pagination>
         </el-col>
     </el-row>
@@ -76,7 +77,7 @@
       <el-row >
         <el-col :span="4">学生姓名:</el-col>
         <el-col :span="20">
-          <input type="text" v-model="BSInfo.stuName"  placeholder="学生姓名" autocomplete="off">
+          <input type="text" v-model="BSInfo.name"  placeholder="学生姓名" autocomplete="off">
         </el-col>
         <el-col :span="4">出发地:</el-col>
         <el-col :span="20">
@@ -96,8 +97,8 @@
         </el-col>
         <el-col :span="4">是否发烧:</el-col>
         <el-col :span="20">
-          <el-radio v-model="BSInfo.isFever" :label="true">是</el-radio>
-          <el-radio v-model="BSInfo.isFever" :label="false">否</el-radio>
+          <el-radio v-model="BSInfo.isFever" :label="0">是</el-radio>
+          <el-radio v-model="BSInfo.isFever" :label="1">否</el-radio>
         </el-col>
            <el-col :span="4">体温:</el-col>
         <el-col :span="20">
@@ -124,20 +125,14 @@ export default{
   components:{CommonTable},
   data (){
     return {
-      dialogTip: '新增返校信息',
-      stuName: '',
-      departPlace: '',
-      departTime: '',
-      destination: '',
-      isFever: '',
-      temperature: '',
-      transportMode: '',
+      total: 0,
       BSInfo:{},
+      dialogTip:'',
       tableData:[
-        {id:1, stuName:'haohao', stuId:1, departPlace: '东莞', departTime: '2022/12/2', destination: '新西兰', isFever: false, temperature: 36.5},
-        {id:2, stuName:'haohao', stuId:2, departPlace: '东莞', departTime: '2022/12/2', destination: '大理', isFever: true, temperature: 36.5},
-        {id:3, stuName:'haohao', stuId:3, departPlace: '东莞', departTime: '2022/12/2', destination: '贵州', isFever: false, temperature: 36.5},
-        {id:4, stuName:'haohao', stuId:4, departPlace: '东莞', departTime: '2022/12/2', destination: '深圳', isFever: false, temperature: 36.5}
+        {id:1, name:'haohao', stuId:1, departPlace: '东莞', departTime: '2022/12/2', destination: '新西兰', isFever: false, temperature: 36.5},
+        {id:2, name:'haohao', stuId:2, departPlace: '东莞', departTime: '2022/12/2', destination: '大理', isFever: true, temperature: 36.5},
+        {id:3, name:'haohao', stuId:3, departPlace: '东莞', departTime: '2022/12/2', destination: '贵州', isFever: false, temperature: 36.5},
+        {id:4, name:'haohao', stuId:4, departPlace: '东莞', departTime: '2022/12/2', destination: '深圳', isFever: false, temperature: 36.5}
       ],
       tableColumn: [
         {name:'学生ID', varName:'stuId', width:200},
@@ -152,10 +147,15 @@ export default{
       dialogVisible: false
     }
   },
-  mounted(){
+  async mounted(){
     // 初始获取返校信息（pageNum:1、pageSize:10)
     let initData  = {pageNum:1, pageSize:10}
-    let tableData = getBackSchoolInfo(initData)
+    let res = await this.getBSInfo(initData)
+    let tableData = (res && res.data && res.data.records)? res.data.records : []
+    console.log('res', res)
+    this.total = (res && res.data && res.data.total) ? res.data.total : 0
+    console.log('res.records', res.records)
+    console.log('tableData', tableData)
     tableData = convertToString(tableData, 'isFever')
     this.tableData = tableData
   },
@@ -178,6 +178,12 @@ export default{
     async handleDelete(data){
       const res = await deleteBackSchoolInfo(data.id)
       console.log('deleteBackSchoolInfo', res)
+    },
+    async getBSInfo(initData){
+      return getBackSchoolInfo(initData)
+    },
+    handleCurrentChange(pageNum){
+      console.log('pageNum', pageNum)
     }
   }
 }
