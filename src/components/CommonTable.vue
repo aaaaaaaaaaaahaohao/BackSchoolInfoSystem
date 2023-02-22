@@ -5,7 +5,7 @@
         <div v-for="functionName in headerFunctionName" :index="functionName" :key="functionName">
             <el-col :span="2" class="text-align">{{functionName}}</el-col>
             <el-col :span="6">
-            <el-input class="input-width-height" type="text"></el-input>
+            <el-input type="text"></el-input>
             </el-col>
         </div>
         <el-col :span="2">
@@ -68,7 +68,7 @@ export default {
       console.log(row);
     },
     handleUpdate(row){
-      this.showDialog()
+      this.showDialog(row)
     }
   },
   props: ["headerFunctionName", "tableData", "tableColumn", "showDialog"],

@@ -8,12 +8,16 @@ export function request(config) {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
+    method: 'post',
     //设置请求超时时间
     timeout: 5000 
   })
   // 2.axios的拦截器，用不到的可以忽略这节
   // 2.1.请求拦截的作用
   instance.interceptors.request.use(config => {
+    console.log('进如intercept')
+    config.headers.accesstoken = localStorage.getItem('token') || '';
+    console.log('config', config)
     return config
   }, err => {
     console.log('请求拦截err: '+err);

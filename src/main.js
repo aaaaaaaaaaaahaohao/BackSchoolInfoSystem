@@ -1,11 +1,11 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+/* eslint-disable */
 import Vue from 'vue'
 import App from './App'
 import router from './router'
 import 'element-ui/lib/theme-chalk/index.css'
-import { Button, Select, Form, FormItem, Input, Image, Header, Container, Aside, Menu, Submenu, MenuItem, MenuItemGroup, Main, Breadcrumb, BreadcrumbItem, Row, Col, Dropdown, DropdownItem, DropdownMenu, Table, TableColumn, Pagination, Dialog } from 'element-ui'
-
+import { Button, Select, Form, FormItem, Input, Image, Header, Container, Aside, Menu, Submenu, MenuItem, MenuItemGroup, Main, Breadcrumb, BreadcrumbItem, Row, Col, Dropdown, DropdownItem, DropdownMenu, Table, TableColumn, Pagination, Dialog, Radio, RadioGroup, RadioButton } from 'element-ui'
 Vue.component(Button.name, Button)
 Vue.component(Select.name, Select)
 Vue.component(Form.name, Form)
@@ -32,6 +32,11 @@ Vue.component(Table.name, Table)
 Vue.component(TableColumn.name, TableColumn)
 Vue.component(Pagination.name, Pagination)
 Vue.component(Dialog.name, Dialog)
+Vue.component(Radio.name, Radio)
+Vue.component(RadioGroup.name, RadioGroup)
+Vue.component(RadioButton.name, RadioButton)
+
+
 
 /* eslint-disable no-new */
 new Vue({

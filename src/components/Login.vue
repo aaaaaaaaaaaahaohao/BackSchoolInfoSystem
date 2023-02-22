@@ -43,10 +43,10 @@ export default{
           password:password
         } 
         const res = await login(data)
-        let token = "Bearer " + res.data.token
+        let token = res.data.token
         console.log(token)
-          localStorage.setItem('token', token)
-        this.$router.push('/systemEntrance')
+        localStorage.setItem('token', token)
+        this.$router.push('/systemEntrance/BackSchoolInfo')
       },
       doRegister:function(){
         this.$router.push('/Register')
