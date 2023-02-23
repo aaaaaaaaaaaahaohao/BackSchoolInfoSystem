@@ -1,8 +1,8 @@
 /* eslint-disable */ 
 export default
     [{
-    path: '/',
-    name: 'systemEntrance',
+    path: '/index',
+    name: 'index',
     label: '首页',
     icon: 's-home',
     url: 'Home/Home'
