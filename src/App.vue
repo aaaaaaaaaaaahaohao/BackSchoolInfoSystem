@@ -29,6 +29,13 @@ export default {
 .justify-center {
   justify-content: center;
 }
+.justify-between{
+  justify-content: space-between;
+}
+
+.align-center{
+  align-items: center;
+}
 
 .py-2 {
   padding-top: 2rem;

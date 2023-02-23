@@ -4,10 +4,13 @@
       <common-aside />
     </el-aside>
     <el-container>
-      <el-header style="text-align: right;">
-        <div class="userName">{{getUserName}}</div>
+      <el-header class="d-flex justify-between align-center" style="color: #333;border-bottom: 1px solid #ccc">
+        <div>
+          <h2>返校信息管理系统</h2>
+        </div>
+        <div class="userName">{{ getUserName }}</div>
       </el-header>
-      <common-bread />
+      <common-bread style="line-height: 40px" />
       <el-main>
         <router-view />
       </el-main>
@@ -28,9 +31,9 @@ export default {
     CommonAside
   },
   computed: {
-    getUserName(){
+    getUserName() {
       let userInfo = localStorage.getItem('userInfo');
-      if(userInfo){
+      if (userInfo) {
         let res = JSON.parse(userInfo)
         return res.name;
       }
@@ -46,7 +49,8 @@ export default {
   text-align: center;
   line-height: 100vh;
 }
-.userName{
+
+.userName {
   color: #333;
   line-height: 2;
 }

@@ -1,11 +1,14 @@
 /* eslint-disable */
 import axios from 'axios'
+import {
+  Message
+} from 'element-ui'
 export function request(config) {
   // 1.创建axios的实例
   const instance = axios.create({
     // 设置基础的url配置项，这样接口处的url前面就不用写url:'http://127.0.0.1:8000/api/home'，直接写成 url:'/api/home', 就可以了
-    // baseURL: 'http://106.52.71.191:7001/', 
-    baseURL: 'http://127.0.0.1:7001',
+    baseURL: 'http://106.52.71.191:7001/', 
+    // baseURL: 'http://127.0.0.1:7001',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
@@ -21,6 +24,15 @@ export function request(config) {
   }, err => {})
   // 2.2.响应拦截
   instance.interceptors.response.use(res => {
+    console.log(res);
+    if (res.data.type === 'success') {
+      if (res.data.msg && res.data.msg != 'OK') {
+        Message.success(res.data.msg);
+      }
+    } else {
+      Message.warning(res.data.msg);
+    }
+
     return res.data
   }, err => {})
   // 3.发送真正的网络请求
