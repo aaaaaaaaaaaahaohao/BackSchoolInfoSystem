@@ -57,7 +57,6 @@ export default {
   data() {
     return {
       columns: [],
-
       pageConfig: {
         pageSize: 10,
         current: 1,
