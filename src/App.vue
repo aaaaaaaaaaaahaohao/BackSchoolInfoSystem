@@ -44,4 +44,9 @@ export default {
 
 .mb-1 {
   margin-bottom: 1rem;
-}</style>
+}
+.mx-1{
+  margin-left: 1rem;
+  margin-right :1rem;
+}
+</style>

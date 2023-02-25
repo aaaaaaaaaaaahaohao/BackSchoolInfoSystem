@@ -4,7 +4,7 @@
         <el-menu-item v-for="item in noChildren" :key="item.name" :index="item.path" @click="clickItem(item)">
             <span slot="title">{{ item.label }}</span>
         </el-menu-item>
-        <el-menu-item index="logout" @click="handleLogout">退出登录</el-menu-item>
+        <!-- <el-menu-item index="logout" @click="handleLogout">退出登录</el-menu-item> -->
         <el-submenu v-for="item in hasChildren" :key="item.name" :index="item.path">
             <template slot="title">
                 <span slot="title">{{ item.label }}</span>
