@@ -10,9 +10,9 @@
       <el-table-column v-for="(item, index) in getColumn" :key="index" :prop="item.prop" :label="item.label"
         v-bind="item">
         <template v-if="item.slotName && item.slotName == 'action'" v-slot="scope">
-          <el-button v-if="getUserInfo.type === 1 && scope.row.status !== 1 && getUserInfo.canCheck === 1" type="text"
+          <el-button :disabled="!(getUserInfo.type === 1 && scope.row.status !== 1 && getUserInfo.canCheck === 1)" type="text"
             @click="handleCheckBtn(scope.row.id, 1)">审核通过</el-button>
-          <el-button v-if="getUserInfo.type === 1 && scope.row.status !== 2 && getUserInfo.canCheck === 1" type="text"
+          <el-button :disabled="!(getUserInfo.type === 1 && scope.row.status !== 2 && getUserInfo.canCheck === 1)" type="text"
             @click="handleCheckBtn(scope.row.id, 2)">驳回</el-button>
         </template>
       </el-table-column>

@@ -11,7 +11,7 @@
             <el-table-column v-for="(item, index) in getColumn" :key="index" :prop="item.prop" :label="item.label"
                 v-bind="item" show-overflow-tooltip>
                 <template v-if="item.slotName && item.slotName == 'action'" v-slot="scope">
-                    <el-button v-if="getUserInfo.type === 1&&!scope.row.reply && getUserInfo.canReply === 1" type="text"
+                    <el-button :disabled="!(getUserInfo.type === 1&&!scope.row.reply && getUserInfo.canReply === 1)" type="text"
                         @click="handleReplyBtn(scope.row.id)">回复</el-button>
 
                 </template>

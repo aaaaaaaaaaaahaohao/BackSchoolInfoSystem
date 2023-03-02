@@ -7,8 +7,8 @@ export function request(config) {
   // 1.创建axios的实例
   const instance = axios.create({
     // 设置基础的url配置项，这样接口处的url前面就不用写url:'http://127.0.0.1:8000/api/home'，直接写成 url:'/api/home', 就可以了
-    // baseURL: 'http://106.52.71.191:7001/', 
-    baseURL: 'http://127.0.0.1:7001',
+    baseURL: 'http://106.52.71.191:7001/', 
+    // baseURL: 'http://127.0.0.1:7001',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
